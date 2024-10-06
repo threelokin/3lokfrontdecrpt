@@ -1,0 +1,26 @@
+/* Add this to your CSS file */
+.share-template {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .share-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .share-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 16px 0;
+  }
+
+  .share-description {
+    font-size: 18px;
+    color: #333;
+  }

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DK+Uloopet:wght@100..400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.nav-link {
+    transition: color 0.3s ease, font-size 0.3s ease;
+  }
+
+.playwrite-dk-uloopet{
+    font-family: "Playwrite DK Uloopet", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+@media (min-width: 780px) { /* Adjust this breakpoint as needed for your definition of "laptop" */
+
+    body {
+
+      display: none;
+
+    }
+
+  }
