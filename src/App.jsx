@@ -22,7 +22,7 @@ const App = () => {
   const [navVisible, setNavVisible] = useState(true);
   const [lastScrollTop, setLastScrollTop] = useState(0);
 
-  ReactGA.initialize('G-1e5335');
+  ReactGA.initialize('G-P7RJWD9FTT');
 
   useEffect(() => {
     if (!language) {
