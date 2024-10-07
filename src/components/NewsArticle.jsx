@@ -85,6 +85,11 @@ const NewsArticle = React.memo(({ article, fallbackImage, formatDate, truncateDe
           text: truncateDescription(article.description),
           files: [file],
         });
+          window.ReactNativeWebView.postMessage(JSON.stringify({
+          title: article.title,
+          description: truncateDescription(article.description),
+          imageUrl: article.imageUrl
+        }));
       } else {
         window.ReactNativeWebView.postMessage(JSON.stringify({
           title: article.title,
