@@ -81,8 +81,7 @@ const NewsArticle = React.memo(({ article, fallbackImage, formatDate, truncateDe
             imageUrl: image // Send the image data URL
         };
 
-        console.log('Data to send:', dataToSend); // Log the data to be sent
-
+      
         if (navigator.share) {
             await navigator.share({
                 title: article.title,
