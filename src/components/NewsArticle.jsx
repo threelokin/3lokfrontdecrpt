@@ -47,13 +47,9 @@ const NewsArticle = React.memo(({ article, fallbackImage, formatDate, truncateDe
     container.style.display = 'none'; // Initially hide the container
 
     ReactGA.event({
-
         category: 'Share Button',
-
         action: 'Click on "Share" button',
-
         label: 'Button'
-
     });
 
     // Use createRoot to render the ShareTemplate component
@@ -70,41 +66,42 @@ const NewsArticle = React.memo(({ article, fallbackImage, formatDate, truncateDe
     container.style.display = 'block';
 
     try {
-      const canvas = await html2canvas(container, {
-        useCORS: true,
-        allowTaint: false,
-      });
-      const image = canvas.toDataURL('image/jpeg');
-
-      const blob = await (await fetch(image)).blob();
-      const file = new File([blob], `article-${article.article_id}.jpg`, { type: 'image/jpeg' });
-
-      if (navigator.share) {
-        await navigator.share({
-          title: article.title,
-          text: truncateDescription(article.description),
-          files: [file],
+        const canvas = await html2canvas(container, {
+            useCORS: true,
+            allowTaint: false,
         });
-          window.ReactNativeWebView.postMessage(JSON.stringify({
-          title: article.title,
-          description: truncateDescription(article.description),
-          imageUrl: article.imageUrl
-        }));
-      } else {
-        window.ReactNativeWebView.postMessage(JSON.stringify({
-          title: article.title,
-          description: truncateDescription(article.description),
-          imageUrl: article.imageUrl
-        }));
-      }
-    } catch (error) {
+        const image = canvas.toDataURL('image/jpeg');
 
+        const blob = await (await fetch(image)).blob();
+        const file = new File([blob], `article-${article.article_id}.jpg`, { type: 'image/jpeg' });
+
+        const dataToSend = {
+            title: article.title,
+            description: truncateDescription(article.description),
+            imageUrl: image // Send the image data URL
+        };
+
+        console.log('Data to send:', dataToSend); // Log the data to be sent
+
+        if (navigator.share) {
+            await navigator.share({
+                title: article.title,
+                text: truncateDescription(article.description),
+                files: [file],
+            });
+            window.ReactNativeWebView.postMessage(JSON.stringify(dataToSend));
+        } else {
+            window.ReactNativeWebView.postMessage(JSON.stringify(dataToSend));
+        }
+    } catch (error) {
+        console.error('Error sharing:', error);
     } finally {
-      // Clean up the container
-      root.unmount();
-      container.remove();
+        // Clean up the container
+        root.unmount();
+        container.remove();
     }
-  };
+};
+
 
   return (
     <div
