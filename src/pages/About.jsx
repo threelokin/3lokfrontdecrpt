@@ -31,7 +31,7 @@ const About = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
             <p className="text-gray-700">
-              If you have any questions or feedback, please feel free to reach out to us at <a href="mailto:threelok.in@gmail.com" className="text-blue-600 hover:underline">threelok.in@gmail.com</a>.
+              If you have any questions or feedback, please feel free to reach out to us at <a href="https://mail.google.com/mail/u/0/?fs=1&to=threelok.in@gmail.com&tf=cm" className="text-blue-600 hover:underline">threelok.in@gmail.com</a>.
             </p>
           </section>
         </div>
